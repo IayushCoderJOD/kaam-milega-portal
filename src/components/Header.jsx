@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -9,11 +10,13 @@ const Header = () => {
 
     return (
         <div className='flex justify-evenly p-5 bg-purple-600 shadow-xl'>
-            <div className='flex space-x-11'>
-                <img src="https://static.naukimg.com/s/4/100/i/naukri_Logo.png" alt="" />
-            </div>
+            <Link to={"/"} >
+                <div className='flex space-x-11'>
+                    <img src="https://static.naukimg.com/s/4/100/i/naukri_Logo.png" alt="" />
+                </div>
+            </Link>
             <div>
-                <ul className='flex space-x-9 text-xl font-normal text-white'>
+                <ul className='flex space-x-9 text-2xl font-normal text-white'>
                     <li>Jobs</li>
                     <li>Companies</li>
                     <li>Services</li>
@@ -24,7 +27,9 @@ const Header = () => {
                     <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
                         <button>Login</button>
                     </li>
-                    <li className='border border-white pr-2 pl-2 hover:bg-purple-800 p-1 rounded-full shadow-2xl text-white'>Register</li>
+                    <Link to={"/register"}>
+                        <li className='border border-white pr-2 pl-2 bg-purple-700 hover:bg-purple-800 p-1 rounded-full shadow-2xl text-white'>Register</li>
+                    </Link>
                     <li className='text-gray-100'>|</li>
                     <li>
                         <button
