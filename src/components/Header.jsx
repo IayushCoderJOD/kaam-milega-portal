@@ -68,7 +68,7 @@ const Header = () => {
                 </ul>
             </div>
 
-            <div className={!showLogginWindow ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-gray-200 h-full w-[35%] top-0 '} >
+            <div className={!showLogginWindow ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-gray-100 h-full w-[38%] top-0 '} >
                 <button onClick={() => {
                     setShowLoginWindow(!showLogginWindow);
                 }} className='text-2xl pl-3 pt-3'>❌</button>
