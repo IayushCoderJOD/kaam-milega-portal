@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [showLogginWindow, setShowLoginWindow] = useState(false);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
     return (
-        <div className='flex justify-evenly p-5 bg-purple-600 shadow-xl'>
+        <div className=' flex justify-evenly p-5 bg-purple-600 shadow-xl'>
             <Link to={"/"} >
                 <div className='flex space-x-11'>
                     <img src="https://static.naukimg.com/s/4/100/i/naukri_Logo.png" alt="" />
@@ -25,7 +26,9 @@ const Header = () => {
             <div>
                 <ul className='flex space-x-7 text-xl font-normal text-white'>
                     <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
-                        <button>Login</button>
+                        <button onClick={() => {
+                            setShowLoginWindow(!showLogginWindow);
+                        }} >Login</button>
                     </li>
                     <Link to={"/register"}>
                         <li className='border border-white pr-2 pl-2 bg-purple-700 hover:bg-purple-800 p-1 rounded-full shadow-2xl text-white'>Register</li>
@@ -63,6 +66,13 @@ const Header = () => {
                     </li>
 
                 </ul>
+            </div>
+
+            <div className={!showLogginWindow ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-gray-200 h-full w-[35%] top-0 '} >
+                <button onClick={() => {
+                    setShowLoginWindow(!showLogginWindow);
+                }} className='text-2xl pl-3 pt-3'>❌</button>
+                <h1 className='pt-28 text-purple-700 text-4xl font-semibold pl-[40%] ' >Login here</h1>
             </div>
         </div>
     );
