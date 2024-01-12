@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { alreadyUser } from '../slices/LoginSlice';
 
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [showLogginWindow, setShowLoginWindow] = useState(false);
+    const isAlreadyUser = useSelector(store => store.site.loginForm);
+
+    const dispatch = useDispatch();
+
+    const handleLoginForm = () => {
+        dispatch(alreadyUser())
+    }
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -26,9 +34,9 @@ const Header = () => {
             <div>
                 <ul className='flex space-x-7 text-xl font-normal text-white'>
                     <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
-                        <button onClick={() => {
-                            setShowLoginWindow(!showLogginWindow);
-                        }} >Login</button>
+                        <button onClick={() =>
+                            handleLoginForm()
+                        } >Login</button>
                     </li>
                     <Link to={"/register"}>
                         <li className='border border-white pr-2 pl-2 bg-purple-700 hover:bg-purple-800 p-1 rounded-full shadow-2xl text-white'>Register</li>
@@ -68,13 +76,13 @@ const Header = () => {
                 </ul>
             </div>
 
-            <div className={!showLogginWindow ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-gray-100 h-full w-[38%] top-0 '} >
-                <button onClick={() => {
-                    setShowLoginWindow(!showLogginWindow);
-                }} className='text-2xl pl-3 pt-3'>❌</button>
+            <div className={!isAlreadyUser ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-gray-100 h-full w-[38%] top-0 '} >
+                <button onClick={() =>
+                    handleLoginForm()
+                } className='text-2xl pl-3 pt-3'>❌</button>
                 <h1 className='pt-28 text-purple-700 text-4xl font-semibold pl-[40%] ' >Login here</h1>
             </div>
-        </div>
+        </div >
     );
 };
 

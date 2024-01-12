@@ -2,9 +2,13 @@ import React from 'react'
 import Header from './Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faBuilding, faFile, faHome, faPerson, faSearch, faSpaceShuttle, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 
 const BasicInfoPage = () => {
+
+    const isAlreadyUser = useSelector(store => store.site.loginForm);
+
     return (
         <>
             <Header />
@@ -12,7 +16,7 @@ const BasicInfoPage = () => {
                 <div className=' flex flex-col items-center pt-[6%]' >
                     <h1 className=' text-5xl font-bold font-serif'>Find your <span className='text-purple-700' >dream job</span> now</h1>
                     <p className='text-2xl font-medium text-gray-800 pt-5'><span className='text-purple-700'>10 lakh+</span> jobs for you to explore</p>
-                    <button className='relative text-2xl top-[109px] left-[418px]' >
+                    <button className={isAlreadyUser ? 'hidden' : 'relative text-2xl top-[109px] left-[418px]'} >
                         <FontAwesomeIcon className='bg-purple-700 text-white shadow-2xl hover:bg-purple-600 p-[24px]   rounded-r-full ' icon={faSearch} />
                     </button>
                     <input className='mt-8 rounded-full w-[60%] p-5 text-2xl border-2 shadow-2xl border-white' type="text" placeholder='Enter skills / designations / Companies' />
