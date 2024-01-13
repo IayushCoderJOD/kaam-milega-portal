@@ -76,11 +76,20 @@ const Header = () => {
                 </ul>
             </div>
 
-            <div className={!isAlreadyUser ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-gray-100 h-full w-[38%] top-0 '} >
+            <div className={!isAlreadyUser ? 'hidden' : 'absolute shadow-2xl rounded-md right-0 bg-white h-full w-[38%] top-0 '} >
                 <button onClick={() =>
                     handleLoginForm()
                 } className='text-2xl pl-3 pt-3'>❌</button>
                 <h1 className='pt-28 text-purple-700 text-4xl font-semibold pl-[40%] ' >Login here</h1>
+                <div className='bg-gray-100 m-4 shadow-lg rounded-2xl'>
+                    <div className=' ml-12 flex flex-col pt-7 text-xl '>
+                        <label>Email id</label>
+                        <input className='border w-[80%] border-purple-700  p-2 text-xl rounded-xl ' placeholder='Enter your EMAIL-ID' type="text" />
+                        <label className='pt-5' >Password</label>
+                        <input className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='Enter your password' type="text" />
+                        <button className="mt-7 mb-7 p-2 text-white rounded-xl shadow-2xl hover:bg-purple-600 ml-40 bg-purple-700 w-1/4" type='submit' >Register</button>
+                    </div>
+                </div>
             </div>
         </div >
     );

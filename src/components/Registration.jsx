@@ -21,9 +21,6 @@ const Registration = () => {
                 </div>
                 <div className='w-[60%]  m-4 p-12 pt-6 bg-gray-100 shadow-2xl rounded-xl' >
                     <div className='ml-28' >
-
-
-                        {/* <div className='m-4 bg-gray-100  h-full p-16 w-[80%] rounded-xl flex flex-col  items-center '> */}
                         <h1 className='text-2xl font-semibold'> Find a <span className='text-purple-700' >job</span> & grow your <span className='text-purple-700' >career</span> </h1>
                         <div className='flex flex-col pt-7 text-xl'>
                             <label>Name</label>
