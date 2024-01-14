@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { alreadyUser } from '../slices/LoginSlice';
 import { checkValidDataForLogin } from "../constants/Validate"
 import { auth } from '../constants/FireBase';
+import logo from "../assets/logo.png"
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { removeUser } from '../slices/UserSLice';
 const Header = () => {
@@ -53,13 +54,13 @@ const Header = () => {
     };
 
     return (
-        <div className=' flex justify-evenly p-5 bg-purple-600 shadow-xl'>
+        <div className=' flex justify-evenly p-2 bg-purple-600 shadow-xl'>
             <Link to={"/"} >
                 <div className='flex space-x-11'>
-                    <img src="https://static.naukimg.com/s/4/100/i/naukri_Logo.png" alt="" />
+                    <img className='h-20 shadow-xl rounded-2xl' src={logo} alt="" />
                 </div>
             </Link>
-            <div>
+            <div className='pt-5'>
                 <ul className='flex space-x-9 text-2xl font-normal text-white'>
                     <Link to={"/jobs"} >
                         <li className='cursor-pointer hover:text-pruple-800' >Jobs</li>
@@ -73,7 +74,7 @@ const Header = () => {
                     </Link>
                 </ul>
             </div>
-            <div>
+            <div className='pt-5' >
                 <ul className='flex space-x-7 text-xl font-normal text-white'>
                     {!user && <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
                         <button onClick={() =>
