@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
-import { checkValidDataForRegistration } from '../assets/Validate'
+import { checkValidDataForRegistration } from '../constants/Validate'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../constants/FireBase';
 const Registration = () => {
 
     const email = useRef(null);
@@ -11,6 +13,21 @@ const Registration = () => {
     const handleButtonClick = () => {
         const msg = checkValidDataForRegistration(email.current.value, password.current.value, phone.current.value);
         setErrorMessage(msg);
+        if (msg) return;
+        // create a new user
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + errorMessage)
+                // ..
+            });
 
     }
     return (

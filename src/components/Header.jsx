@@ -2,7 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { alreadyUser } from '../slices/LoginSlice';
-import { checkValidDataForLogin } from "../assets/Validate"
+import { checkValidDataForLogin } from "../constants/Validate"
+import { auth } from '../constants/FireBase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const isAlreadyUser = useSelector(store => store.site.loginForm);
@@ -19,6 +21,20 @@ const Header = () => {
         // validate the data;
         const msg = checkValidDataForLogin(email.current.value, password.current.value);
         setErrorMessage(msg);
+        if (msg) return;
+        // sign in the user
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + "-" + errorMessage)
+            });
 
     }
 
