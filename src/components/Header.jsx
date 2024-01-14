@@ -1,21 +1,32 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { alreadyUser } from '../slices/LoginSlice';
 import { checkValidDataForLogin } from "../constants/Validate"
 import { auth } from '../constants/FireBase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { removeUser } from '../slices/UserSLice';
 const Header = () => {
+    const user = useSelector(store => store.user)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const isAlreadyUser = useSelector(store => store.site.loginForm);
     const email = useRef(null);
     const password = useRef(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleLoginForm = () => {
         dispatch(alreadyUser())
+    }
+
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            dispatch(removeUser())
+            navigate("/")
+        }).catch((error) => {
+        });
     }
     const handleButtonClick = () => {
         // validate the data;
@@ -25,10 +36,9 @@ const Header = () => {
         // sign in the user
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
-                console.log(user);
-                // ...
+                navigate("/")
+                dispatch(alreadyUser())
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -54,20 +64,30 @@ const Header = () => {
                     <Link to={"/jobs"} >
                         <li className='cursor-pointer hover:text-pruple-800' >Jobs</li>
                     </Link>
-                    <li>Companies</li>
-                    <li>Services</li>
+                    <Link to={"/companies"} >
+                        <li className='cursor-pointer hover:text-pruple-800' >Companies</li>
+                    </Link>
+
+                    <Link to={"/browse"} >
+                        <li className='cursor-pointer hover:text-pruple-800' >Browse</li>
+                    </Link>
                 </ul>
             </div>
             <div>
                 <ul className='flex space-x-7 text-xl font-normal text-white'>
-                    <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
+                    {!user && <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
                         <button onClick={() =>
                             handleLoginForm()
                         } >Login</button>
-                    </li>
-                    <Link to={"/register"}>
+                    </li>}
+                    {user && <li className='border border-white bg-white hover:bg-gray-200 text-purple-800 pr-2 pl-2 p-1 rounded-full shadow-2xl'>
+                        <button onClick={() =>
+                            handleLogout()
+                        } >Logout</button>
+                    </li>}
+                    {!user && <Link to={"/register"}>
                         <li className='border border-white pr-2 pl-2 bg-purple-700 hover:bg-purple-800 p-1 rounded-full shadow-2xl text-white'>Register</li>
-                    </Link>
+                    </Link>}
                     <li className='text-gray-100'>|</li>
                     <li>
                         <button

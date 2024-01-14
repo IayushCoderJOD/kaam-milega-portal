@@ -3,30 +3,34 @@ import Header from './Header'
 import { checkValidDataForRegistration } from '../constants/Validate'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../constants/FireBase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../slices/UserSLice';
+import { alreadyUser } from '../slices/LoginSlice';
 const Registration = () => {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const email = useRef(null);
     const password = useRef(null);
     const phone = useRef(null);
     const [errorMessage, setErrorMessage] = useState(null);
 
     const handleButtonClick = () => {
+
         const msg = checkValidDataForRegistration(email.current.value, password.current.value, phone.current.value);
         setErrorMessage(msg);
         if (msg) return;
-        // create a new user
+
         createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
-                // Signed up 
                 const user = userCredential.user;
-                console.log(user);
-                // ...
+                navigate("/")
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 setErrorMessage(errorCode + errorMessage)
-                // ..
             });
 
     }
