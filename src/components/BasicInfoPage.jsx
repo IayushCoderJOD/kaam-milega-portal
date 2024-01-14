@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faBuilding, faFile, faHome, faPerson, faSearch, faSpaceShuttle, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
+import CompanyCard from '../constants/CompanyCard';
 
 
 const BasicInfoPage = () => {
-
     const isAlreadyUser = useSelector(store => store.site.loginForm);
 
     return (
@@ -32,6 +32,10 @@ const BasicInfoPage = () => {
                     <p className='text-4xl pt-12 font-semibold' >
                         Top companies <span className='text-purple-700'>hiring</span> now
                     </p>
+                    {
+
+                    }
+                    <CompanyCard />
 
                 </div>
             </div >

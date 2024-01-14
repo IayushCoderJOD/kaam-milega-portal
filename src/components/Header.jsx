@@ -65,13 +65,13 @@ const Header = () => {
                     <Link to={"/jobs"} >
                         <li className='cursor-pointer hover:text-pruple-800' >Jobs</li>
                     </Link>
+                    <Link to={"/browse"} >
+                        <li className='cursor-pointer hover:text-pruple-800' >Browse</li>
+                    </Link>
                     <Link to={"/companies"} >
                         <li className='cursor-pointer hover:text-pruple-800' >Companies</li>
                     </Link>
 
-                    <Link to={"/browse"} >
-                        <li className='cursor-pointer hover:text-pruple-800' >Browse</li>
-                    </Link>
                 </ul>
             </div>
             <div className='pt-5' >
