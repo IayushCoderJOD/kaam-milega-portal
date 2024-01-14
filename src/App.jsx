@@ -22,7 +22,7 @@ function App() {
     },
     {
       path: "/register",
-      element: <Registration />
+      element: user ? <BasicInfoPage /> : <Registration />
     },
     {
       path: "/jobs",
