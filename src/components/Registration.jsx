@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Header from './Header'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faBuilding, faFile, faHome, faPerson, faSearch, faSpaceShuttle, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
-
+import { checkValidDataForRegistration } from '../assets/Validate'
 const Registration = () => {
+
+    const email = useRef(null);
+    const password = useRef(null);
+    const phone = useRef(null);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const handleButtonClick = () => {
+        const msg = checkValidDataForRegistration(email.current.value, password.current.value, phone.current.value);
+        setErrorMessage(msg);
+
+    }
     return (
         <>
             <Header />
@@ -22,21 +31,22 @@ const Registration = () => {
                 <div className='w-[60%]  m-4 p-12 pt-6 bg-gray-100 shadow-2xl rounded-xl' >
                     <div className='ml-28' >
                         <h1 className='text-2xl font-semibold'> Find a <span className='text-purple-700' >job</span> & grow your <span className='text-purple-700' >career</span> </h1>
-                        <div className='flex flex-col pt-7 text-xl'>
+                        <form onSubmit={(e) => e.preventDefault()} className='flex flex-col pt-7 text-xl'>
                             <label>Name</label>
                             <input className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='What is your name?' type="text" />
                             <br />
                             <label>Email id</label>
-                            <input className='border w-[80%] border-purple-700  p-2 text-xl rounded-xl ' placeholder='Tell us your EMAIL-ID' type="text" />
+                            <input ref={email} className='border w-[80%] border-purple-700  p-2 text-xl rounded-xl ' placeholder='Tell us your EMAIL-ID' type="email" />
                             <br />
 
                             <label>Password</label>
-                            <input className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='Create a password for your account' type="text" />
+                            <input ref={password} className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='Create a password for your account' type="password" />
                             <br />
                             <label>Mobile number</label>
-                            <input className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='+91-95206xxxxx' type="text" />
-                            <button className="mt-7 p-2 text-white rounded-xl shadow-2xl hover:bg-purple-600 ml-52 bg-purple-700 w-1/4" type='submit' >Register</button>
-                        </div>
+                            <input ref={phone} className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='+91-95206xxxxx' type="number" />
+                            <p className='text-xl pt-3 text-red-600' >{errorMessage}</p>
+                            <button onClick={handleButtonClick} className="mt-7 p-2 text-white rounded-xl shadow-2xl hover:bg-purple-600 ml-52 bg-purple-700 w-1/4" type='submit' >Register</button>
+                        </form>
                     </div>
                 </div>
                 {/* </div> */}

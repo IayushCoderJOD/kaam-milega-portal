@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { alreadyUser } from '../slices/LoginSlice';
-
+import { checkValidDataForLogin } from "../assets/Validate"
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const isAlreadyUser = useSelector(store => store.site.loginForm);
-
+    const email = useRef(null);
+    const password = useRef(null);
+    const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
+    // const navigate = useNavigate()
 
     const handleLoginForm = () => {
         dispatch(alreadyUser())
+    }
+    const handleButtonClick = () => {
+        // validate the data;
+        const msg = checkValidDataForLogin(email.current.value, password.current.value);
+        setErrorMessage(msg);
+
     }
 
     const toggleDropdown = () => {
@@ -26,7 +35,9 @@ const Header = () => {
             </Link>
             <div>
                 <ul className='flex space-x-9 text-2xl font-normal text-white'>
-                    <li>Jobs</li>
+                    <Link to={"/jobs"} >
+                        <li className='cursor-pointer hover:text-pruple-800' >Jobs</li>
+                    </Link>
                     <li>Companies</li>
                     <li>Services</li>
                 </ul>
@@ -82,13 +93,17 @@ const Header = () => {
                 } className='text-2xl pl-3 pt-3'>❌</button>
                 <h1 className='pt-28 text-purple-700 text-4xl font-semibold pl-[40%] ' >Login here</h1>
                 <div className='bg-gray-100 m-4 shadow-lg rounded-2xl'>
-                    <div className=' ml-12 flex flex-col pt-7 text-xl '>
+                    <form onSubmit={(e) => e.preventDefault()} className=' ml-12 flex flex-col pt-7 text-xl '>
                         <label>Email id</label>
-                        <input className='border w-[80%] border-purple-700  p-2 text-xl rounded-xl ' placeholder='Enter your EMAIL-ID' type="text" />
+                        <input ref={email} className='border w-[80%] border-purple-700  p-2 text-xl rounded-xl ' placeholder='Enter your EMAIL-ID' type="email" />
+
                         <label className='pt-5' >Password</label>
-                        <input className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='Enter your password' type="text" />
-                        <button className="mt-7 mb-7 p-2 text-white rounded-xl shadow-2xl hover:bg-purple-600 ml-40 bg-purple-700 w-1/4" type='submit' >Register</button>
-                    </div>
+                        <input ref={password} className='border w-[80%] border-purple-700 p-2 text-xl rounded-xl' placeholder='Enter your password' type="password" />
+
+                        <p className='pt-2 text-xl text-red-600 font-normal font-serif'  >{errorMessage}</p>
+
+                        <button onClick={handleButtonClick} className="mt-7 mb-7 p-2 text-white rounded-xl shadow-2xl hover:bg-purple-600 ml-40 bg-purple-700 w-1/4" type='submit' >Take me in</button>
+                    </form>
                 </div>
             </div>
         </div >

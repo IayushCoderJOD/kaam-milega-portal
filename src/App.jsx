@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import BasicInfoPage from "./components/BasicInfoPage";
 import Registration from "./components/Registration";
+import Jobs from "./components/Jobs";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -13,6 +14,10 @@ function App() {
     {
       path: "/register",
       element: <Registration />
+    },
+    {
+      path: "/jobs",
+      element: <Jobs />
     }
   ])
 
