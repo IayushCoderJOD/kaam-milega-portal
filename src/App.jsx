@@ -15,6 +15,7 @@ import Companies from "./components/Companies";
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(store => store.user)
+  console.log(user);
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -40,16 +41,10 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
-
-        // ...
       } else {
-
-        // User is signed out
         dispatch(removeUser())
-        // ...
       }
     });
   }, [])

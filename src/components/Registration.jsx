@@ -5,8 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../constants/FireBase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../slices/UserSLice';
-import { alreadyUser } from '../slices/LoginSlice';
+
 const Registration = () => {
 
     const navigate = useNavigate();

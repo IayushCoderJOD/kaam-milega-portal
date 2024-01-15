@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const JobDetails = ({ title, company, type, experience, postedOn, location, skills, job_link }) => {
-    console.log(skills)
     return (
         <>
             <div className=' flex justify-between  mt-9 bg-gray-100 shadow-xl p-4 w-[60%] rounded-xl' >
@@ -26,7 +25,6 @@ const JobDetails = ({ title, company, type, experience, postedOn, location, skil
                     </Link>
                 </div>
             </div>
-
         </>
     )
 }
