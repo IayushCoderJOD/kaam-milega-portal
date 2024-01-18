@@ -2,7 +2,9 @@ import React from 'react'
 
 const CompanyCard = () => {
     return (
-        <div>CompanyCard</div>
+        <div>
+            Here comes a carousel self made
+        </div>
     )
 }
 
