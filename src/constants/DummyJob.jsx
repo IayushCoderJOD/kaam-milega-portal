@@ -168,3 +168,45 @@ export const job_data = [
 
 
 ]
+
+
+
+
+export const comapany_BannerLink1 = [
+    {
+        id: 1,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/january/HN5y7hp89MHcEWgrSi9haJG4iDYWE3DHH0RvvEau.jpeg"
+    },
+    {
+        id: 2,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/october/YReWYFMk24w9ourRJ2RxQf1k81sJU14UyDHrvKgU.jpeg"
+    },
+    {
+        id: 3,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/september/N2zW75QqgL2iUuUUDmrc3vVPu7P3g0fW1WNi82Ph.jpeg"
+    },
+    {
+        id: 4,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/august/KKEOlTBrWIHzBibtGxek5VkyUxa2QeNgX9vPe8qh.jpeg"
+    }
+    ,
+]
+
+export const comapany_BannerLink2 = [
+    {
+        id: 5,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/september/15WS2PQ92d4ic3bvZcKPVBpvR7OwXuTdjW94riUL.jpeg"
+    },
+    {
+        id: 6,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/july/yynMGMz9qDDEqNQPLmijAa0FqfdmRuUNrI1icveZ.jpeg"
+    },
+    {
+        id: 7,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/january/Dd5e9M2ngHQkAEP9s2Hu6agZh9EvDYHZQBaPs5xy.jpeg"
+    },
+    {
+        id: 8,
+        src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/february/Zw3suPwERv1Pb9pmRxKGti1T1SNRqyS7caf3j3Uq.jpeg"
+    },
+]

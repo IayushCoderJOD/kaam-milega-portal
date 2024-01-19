@@ -32,10 +32,9 @@ const BasicInfoPage = () => {
                     <p className='text-4xl pt-12 font-semibold' >
                         Top companies <span className='text-purple-700'>hiring</span> now
                     </p>
-                    {
-
-                    }
-                    <CompanyCard />
+                    <div className="mt-3 shadow-2xl w-[100%] text-white flex justify-center flex-row p-8 pl-0 pr-0  " >
+                        <CompanyCard />
+                    </div>
 
                 </div>
             </div >
