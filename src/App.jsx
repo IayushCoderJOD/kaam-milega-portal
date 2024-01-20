@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "./slices/UserSLice";
 import BrowsePage from "./components/BrowsePage";
 import Companies from "./components/Companies";
+import Profile from "./components/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ function App() {
     {
       path: "/",
       element: <BasicInfoPage />
+    },
+    {
+      path: "/profile",
+      element: <Profile />
     },
     {
       path: "/register",

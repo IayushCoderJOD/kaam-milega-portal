@@ -124,15 +124,18 @@ const Header = () => {
                         </div>
 
                     </li>
+                    <Link to={"/profile"} >
+                        <button onMouseOver={() => {
+                            setProfile('block');
+                        }} onMouseOut={() => {
+                            setProfile('hidden')
+                        }}
+                            className='bg-white rounded-full p-1 pl-3 pr-3 ml-4'>
+                            <FontAwesomeIcon className='text-purple-700' icon={faUser} />
+                        </button>
+                    </Link>
 
-                    <button onMouseOver={() => {
-                        setProfile('block');
-                    }} onMouseOut={() => {
-                        setProfile('hidden')
-                    }} className='bg-white rounded-full p-1 pl-3 pr-3 ml-4'>
-                        <FontAwesomeIcon className='text-purple-700' icon={faUser} />
-                    </button>
-                    <h1 className={`absolute right-[165px] font-serif font-medium top-[68px] ${profile} `}>Profile</h1>
+                    <h1 className={`absolute right-[160px] font-serif font-medium top-[68px] ${profile} `}>Profile</h1>
                 </ul>
             </div>
 
