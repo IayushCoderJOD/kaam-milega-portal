@@ -7,8 +7,11 @@ import { auth } from '../constants/FireBase';
 import logo from "../assets/logo.png"
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { removeUser } from '../slices/UserSLice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPerson, faPersonRifle, faUser } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
     const user = useSelector(store => store.user)
+    const [profile, setProfile] = useState('hidden');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const isAlreadyUser = useSelector(store => store.site.loginForm);
     const email = useRef(null);
@@ -119,8 +122,17 @@ const Header = () => {
                                 </li>
                             </ul>
                         </div>
+
                     </li>
 
+                    <button onMouseOver={() => {
+                        setProfile('block');
+                    }} onMouseOut={() => {
+                        setProfile('hidden')
+                    }} className='bg-white rounded-full p-1 pl-3 pr-3 ml-4'>
+                        <FontAwesomeIcon className='text-purple-700' icon={faUser} />
+                    </button>
+                    <h1 className={`absolute right-[165px] font-serif font-medium top-[68px] ${profile} `}>Profile</h1>
                 </ul>
             </div>
 
