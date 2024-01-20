@@ -1,15 +1,25 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useRef, useState } from 'react'
 import Header from './Header'
 import profilePic from '../assets/profile.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faLocation, faMailReply, faMessage, faPhone, faSuitcase } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
+import { addSkill, removeSkill } from '../slices/SkillSlice'
 
 const Profile = () => {
 
     const dispatch = useDispatch();
+    const skillToAdd = useRef(null)
+    const [removeButton, setRemoveButton] = useState('hidden')
     const skills = useSelector(store => store.skills);
+    const handleSkillAddClick = () => {
+        dispatch(addSkill(skillToAdd.current.value));
+        skillToAdd.current.value = "";
+    }
 
+    const handleRemoveSkill = (index) => {
+        dispatch(removeSkill(index));
+    };
     return (
         <>
             <Header />
@@ -33,7 +43,7 @@ const Profile = () => {
                     </div>
                     <hr className='ml-2 w-[70%]' /> < hr className=' ml-2 w-[70%]' />
                     <div className='flex'>
-                        <ul className='pl-5 mt-2 text-xs text-gray-700'>
+                        <ul className='pl-5 mt-2 text-sm text-gray-700'>
                             <li className='mb-2'> <FontAwesomeIcon className='pr-1 ' icon={faLocation} /> New Delhi, INDIA</li>
                             <li className='mb-2'> <FontAwesomeIcon className='pr-1 ' icon={faSuitcase} /> Fresher</li>
                             <li className='mb-2'> <FontAwesomeIcon className='pr-1 ' icon={faCalendar} /> Add availability to join</li>
@@ -52,8 +62,27 @@ const Profile = () => {
                         ) : (
                             <h1 className='text-xl pt-1' >You can add more skills</h1>
                         )}
-                        <input className=' w-[10%] p-2  text-md rounded-2xl shadow-lg bg-gray-200 text-white' type="text" placeholder="📝......." />
+                        <input className=' w-[10%] p-2  text-md rounded-2xl shadow-lg bg-gray-200 text-black' type="text"
+                            ref={skillToAdd}
+                            placeholder="📝......." />
+                        <button
+                            onClick={handleSkillAddClick}
+                            className='text-lg hover:text-xl'>➕</button>
                     </div>
+                    <ul className='flex space-x-4 pt-4 pl-5 text-xl font-serif font-medium ' >
+                        {skills.map((skill, i) => (
+                            <li
+                                onMouseOver={() => {
+                                    setRemoveButton('block')
+                                }}
+                                onClick={() => handleRemoveSkill(i)}
+                                onMouseOut={() => {
+                                    setRemoveButton('hidden')
+                                }}
+                                className='cursor-pointer bg-gray-100 w-fit p-1 text-purple-800 rounded-xl shadow-xl flex' id={i} > {skill}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <div >
                     <div>1</div>

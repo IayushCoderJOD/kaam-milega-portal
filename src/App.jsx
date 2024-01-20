@@ -24,7 +24,7 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile />
+      element: !user ? <BasicInfoPage /> : <Profile />
     },
     {
       path: "/register",
