@@ -1,10 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { alreadyUser } from '../slices/LoginSlice';
 import { checkValidDataForLogin } from "../constants/Validate"
 import { auth } from '../constants/FireBase';
 import logo from "../assets/logo.png"
+import ReactPlayer from 'react-player'
+import bannerVideo from "../assets/Ayu-job-searcH.mp4"
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { removeUser } from '../slices/UserSLice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +21,8 @@ const Header = () => {
     const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const [applied, setApplied] = useState('hidden')
+    const [play, setPlay] = useState(false)
 
     const handleLoginForm = () => {
         dispatch(alreadyUser())
@@ -52,6 +56,7 @@ const Header = () => {
 
     }
 
+    useEffect(() => { setPlay(true) }, [])
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
@@ -59,20 +64,28 @@ const Header = () => {
     return (
         <div className=' flex justify-evenly p-2 bg-purple-600 shadow-xl'>
             <Link to={"/"} >
-                <div className='flex space-x-11'>
-                    <img className='h-20 shadow-xl rounded-2xl' src={logo} alt="" />
+                <div className='flex space-x-4'>
+                    <ReactPlayer url={bannerVideo} controls={true} loop={true} playing={play} width="160px" height="90px" />
                 </div>
             </Link>
+
             <div className='pt-5'>
                 <ul className='flex space-x-9 text-2xl font-normal text-white'>
+                    <Link to={"/"} >
+                        <li className='cursor-pointer hover:text-pruple-800' >Home</li>
+                    </Link>
                     <Link to={"/jobs"} >
                         <li className='cursor-pointer hover:text-pruple-800' >Jobs</li>
                     </Link>
-                    <Link to={"/browse"} >
-                        <li className='cursor-pointer hover:text-pruple-800' >Browse</li>
-                    </Link>
                     <Link to={"/companies"} >
-                        <li className='cursor-pointer hover:text-pruple-800' >Companies</li>
+                        <li
+                            onMouseOver={() => {
+                                setApplied('block')
+                            }}
+                            onMouseOut={() => {
+                                setApplied('hidden')
+                            }}
+                            className='cursor-pointer hover:text-pruple-800' >Companies <br /> <span className={` ${applied} text-sm pl-3 `} >(Applied in)</span></li>
                     </Link>
 
                 </ul>
@@ -132,10 +145,9 @@ const Header = () => {
                         }}
                             className='bg-white rounded-full p-1 pl-3 pr-3 ml-4'>
                             <FontAwesomeIcon className='text-purple-700' icon={faUser} />
+                            <h1 className={`absolute right-[160px] font-serif font-medium top-[68px] ${profile} `}>Profile</h1>
                         </button>
                     </Link>
-
-                    <h1 className={`absolute right-[160px] font-serif font-medium top-[68px] ${profile} `}>Profile</h1>
                 </ul>
             </div>
 

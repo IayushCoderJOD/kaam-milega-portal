@@ -23,13 +23,13 @@ const Profile = () => {
     return (
         <>
             <Header />
-            <div className='flex justify-around'>
+            <div className='overflow-hidden flex justify-around'>
                 <div className=' bg-gray-100 shadow-2xl  w-[60%] rounded-xl mt-4 h-full pb-12' >
                     {/* below div will be the profile wallpaper */}
                     <div>
                         <img className='opacity-80 h-52 w-full rounded-lg ' src="https://img.freepik.com/free-vector/abstract-banner-with-low-poly-plexus-network-communications-design_1048-12914.jpg?w=1380&t=st=1705741639~exp=1705742239~hmac=b9ad16ab2d9f3e7645b089f6a70ffb1e2b310011765e7110c1ec71ac549168de" alt="" />
                     </div>
-                    <img src={profilePic} className='absolute right-[33%] top-[30%] h-48 border-4 border-white w-48 rounded-full shadow-2xl ' alt="" />
+                    <img src={profilePic} className='md:w-48 md:h-48 absolute right-[36%] top-[30%] h-32 w-32 border-4 border-white  rounded-full shadow-2xl ' alt="" />
                     {/* below div will be the information page */}
                     <div className='flex justify-start'>
                         <div>
@@ -84,10 +84,10 @@ const Profile = () => {
                         ))}
                     </ul>
                 </div>
-                <div >
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
+                <div className='relative right-0' >
+                    <div className='bg-black text-white p-12  top-9 rounded-xl shadow-2xl w-64  m-4 ' >1</div>
+                    <div className='bg-black text-white p-12  top-9 rounded-xl shadow-2xl w-64  m-4 ' >2</div>
+                    <div className='bg-black text-white p-12  top-9 rounded-xl shadow-2xl w-64  m-4 ' >3</div>
                 </div>
 
 
