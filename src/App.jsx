@@ -9,7 +9,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./constants/FireBase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "./slices/UserSLice";
-import BrowsePage from "./components/BrowsePage";
 import Companies from "./components/Companies";
 import Profile from "./components/Profile";
 
@@ -38,10 +37,6 @@ function App() {
       path: "/companies",
       element: !user ? <BasicInfoPage /> : <Companies />
     },
-    {
-      path: "/browse",
-      element: !user ? <BasicInfoPage /> : <BrowsePage />
-    }
   ])
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

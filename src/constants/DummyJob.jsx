@@ -210,3 +210,7 @@ export const comapany_BannerLink2 = [
         src: "https://media.foundit.in/trex/prod-cdn/media/promotedemployer/2023/february/Zw3suPwERv1Pb9pmRxKGti1T1SNRqyS7caf3j3Uq.jpeg"
     },
 ]
+
+
+
+export const new_Link = "http://hn.algolia.com/api/v1/search?query=";

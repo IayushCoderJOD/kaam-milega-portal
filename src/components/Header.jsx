@@ -79,13 +79,7 @@ const Header = () => {
                     </Link>
                     <Link to={"/companies"} >
                         <li
-                            onMouseOver={() => {
-                                setApplied('block')
-                            }}
-                            onMouseOut={() => {
-                                setApplied('hidden')
-                            }}
-                            className='cursor-pointer hover:text-pruple-800' >Companies <br /> <span className={` ${applied} text-sm pl-3 `} >(Applied in)</span></li>
+                            className='cursor-pointer hover:text-pruple-800' >TechNews</li>
                     </Link>
 
                 </ul>
