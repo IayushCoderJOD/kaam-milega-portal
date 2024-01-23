@@ -26,7 +26,6 @@ const Header = () => {
     const handleLoginForm = () => {
         dispatch(alreadyUser())
     }
-
     const handleLogout = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
