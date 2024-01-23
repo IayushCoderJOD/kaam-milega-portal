@@ -4,6 +4,7 @@ import JobDetails from '../constants/JobDetails'
 import { job_data } from '../constants/DummyJob'
 import ShimmerUi from '../constants/ShimmerUi'
 
+
 const Jobs = () => {
     const [showShimmer, setShowShimmer] = useState(true);
     useEffect(() => {
