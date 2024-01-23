@@ -23,7 +23,6 @@ const Header = () => {
     const navigate = useNavigate()
     const [applied, setApplied] = useState('hidden')
     const [play, setPlay] = useState(false)
-
     const handleLoginForm = () => {
         dispatch(alreadyUser())
     }
