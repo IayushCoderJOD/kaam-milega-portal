@@ -11,7 +11,7 @@ const NewsComponent = ({ title, author, readMore, comments }) => {
                 By- {author} | {comments} comments
             </p>
             <Link to={readMore} target='_blank' >
-                <p className='pt-2 text-red-700 font-medium text-xl'>
+                <p className='pt-2 text-red-800 font-medium text-xl'>
                     Read More
                 </p>
             </Link>
