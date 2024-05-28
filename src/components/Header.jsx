@@ -75,10 +75,10 @@ const Header = () => {
                     <Link to={"/jobs"} >
                         <li className='cursor-pointer hover:text-pruple-800' >Jobs</li>
                     </Link>
-                    <Link to={"/companies"} >
+{/*                     <Link to={"/companies"} >
                         <li
                             className='cursor-pointer hover:text-pruple-800' >TechNews</li>
-                    </Link>
+                    </Link> */}
 
                 </ul>
             </div>
