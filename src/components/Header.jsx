@@ -61,12 +61,12 @@ const Header = () => {
 
     return (
         <div className=' flex justify-evenly p-2 bg-purple-600 shadow-xl'>
-            <Link to={"/"} >
+{/*             <Link to={"/"} >
                 <div className='flex space-x-4'>
                     <ReactPlayer url={bannerVideo} controls={true} loop={true} playing={play} width="160px" height="90px" />
                 </div>
             </Link>
-
+ */}
             <div className='pt-5'>
                 <ul className='flex space-x-9 text-2xl font-normal text-white'>
                     <Link to={"/"} >
